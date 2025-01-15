@@ -1,0 +1,35 @@
+header {
+  background-color: #f8f9fa; /* Light background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 98%;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #343a40 !important; /* Darker text */
+}
+
+.nav-link:hover {
+  text-decoration: underline; /* Add hover effect */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  margin-right: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-outline-primary {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: #fff;
+}
