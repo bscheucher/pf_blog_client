@@ -35,12 +35,12 @@ function HomePage() {
 
   return (
     <div>
-      <h1>All Posts</h1>
+      <h1 className="mx-2 ">All Posts</h1>
       {isLoggedIn && (
         <Link
           to={`/posts`}
           role="button"
-          className="btn btn-outline-secondary mt-3 mb-1"
+          className="btn btn-outline-secondary mt-3 mb-1 mx-2"
         >
           Create post
         </Link>

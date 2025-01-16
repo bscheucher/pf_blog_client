@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../services/AuthContext";
 import { getUserById, updateUser } from "../services/api";
+import useValidation from "../services/Validation";
 
 const UpdateUserPage = () => {
   const { userId: authUserId } = useContext(AuthContext); // Authenticated user ID
@@ -15,6 +16,7 @@ const UpdateUserPage = () => {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const { errors, validate, validateForm } = useValidation();
 
   useEffect(() => {
     if (!authUserId || authUserId.toString() !== id) {
@@ -43,10 +45,12 @@ const UpdateUserPage = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    validate(name, value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm(formData)) return;
     setError("");
     setSuccess("");
 
@@ -102,6 +106,9 @@ const UpdateUserPage = () => {
             onChange={handleInputChange}
             placeholder="Enter new username"
           />
+          {errors.username && (
+            <small className="text-danger">{errors.username}</small>
+          )}
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -116,6 +123,9 @@ const UpdateUserPage = () => {
             onChange={handleInputChange}
             placeholder="Enter new email"
           />
+          {errors.email && (
+            <small className="text-danger">{errors.email}</small>
+          )}
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
@@ -130,6 +140,9 @@ const UpdateUserPage = () => {
             onChange={handleInputChange}
             placeholder="Enter new password"
           />
+          {errors.password && (
+            <small className="text-danger">{errors.password}</small>
+          )}
         </div>
         <button type="submit" className="btn btn-primary">
           Update
