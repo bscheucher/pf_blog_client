@@ -8,7 +8,7 @@ function CommentCard({ comment }) {
         <p className="card-text">{comment.content}</p>
         <p className="card-text">
           <small className="text-muted">
-            Author: {formatDate(comment.username)}
+            Author: {comment.username}
           </small>
         </p>
         <p className="card-text">
