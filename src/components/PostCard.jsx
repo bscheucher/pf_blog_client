@@ -4,6 +4,7 @@ import { getPostLikes, assignLikeToPost } from "../services/api";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../services/AuthContext";
 import "./components-css/PostCard.css";
+import { formatDate } from "../services/formatDate";
 
 function PostCard({ post }) {
   const [likes, setLikes] = useState([]);
@@ -63,7 +64,7 @@ function PostCard({ post }) {
           <small className="text-muted">Author: {post.author}</small>
         </p>
         <p className="card-text">
-          <small className="text-muted">Created: {post.created_at}</small>
+          <small className="text-muted">Created: {formatDate(post.created_at)}</small>
         </p>
         <div className="d-flex align-items-center mt-3">
           <img
